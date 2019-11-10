@@ -1,0 +1,6 @@
+---
+
+podman_storage_conf_file: /etc/containers/storage.conf
+podman_storage_settings: {}
+podman_storage_options_settings: {}
+podman_storage_options_thinpool_settings: {}

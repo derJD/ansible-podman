@@ -1,0 +1,20 @@
+---
+
+- name: add repository
+  apt_repository: repo=ppa:projectatomic/ppa
+  when: ansible_os_family == "Ubuntu"
+
+- name: install podman
+  package: name=podman
+
+- name: storage storage.conf
+  ini_file: path={{ podman_storage_conf_file }} section=storage option={{ item }} value={{ podman_storage_settings[item] }}
+  with_items: "{{ podman_storage_settings }}"
+
+- name: storage.options storage.conf
+  ini_file: path={{ podman_storage_conf_file }} section=storage.options option={{ item }} value={{ podman_storage_options_settings[item] }}
+  with_items: "{{ podman_storage_options_settings }}"
+
+- name: storage.options.thinpool storage.conf
+  ini_file: path={{ podman_storage_conf_file }} section=storage.options.thinpool option={{ item }} value={{ podman_storage_options_thinpool_settings[item] }}
+  with_items: "{{ podman_storage_options_thinpool_settings }}"

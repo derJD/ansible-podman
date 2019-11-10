@@ -1,0 +1,18 @@
+galaxy_info:
+  author: derJD
+  description: Manage podman installation and configuration
+  license: BSD
+  role_name: podman
+  min_ansible_version: 2.9
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    - name: ArchLinux
+      version:
+        - all
+  galaxy_tags:
+    - container
+    - development
+
+dependencies: []

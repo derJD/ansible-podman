@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  remote_user: root
+  vars:
+    podman_storage_settings:
+      driver: zfs
+  roles:
+    - podman
