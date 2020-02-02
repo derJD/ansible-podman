@@ -5,7 +5,7 @@
   when: ansible_distribution == "Ubuntu"
 
 - name: install podman
-  package: name=podman
+  package: name=podman update_cache=yes
 
 - name: storage storage.conf
   ini_file: path={{ podman_storage_conf_file }} section=storage option={{ item }} value={{ podman_storage_settings[item] }}
