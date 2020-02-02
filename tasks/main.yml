@@ -2,7 +2,7 @@
 
 - name: add repository
   apt_repository: repo=ppa:projectatomic/ppa
-  when: ansible_os_family == "Ubuntu"
+  when: ansible_distribution == "Ubuntu"
 
 - name: install podman
   package: name=podman
