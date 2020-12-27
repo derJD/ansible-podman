@@ -1,20 +1,16 @@
 ---
 
-- name: add repository
-  apt_repository: repo=ppa:projectatomic/ppa
-  when: ansible_distribution == "Ubuntu"
-
+- name: Distribution specific tasks
+  include_tasks: "{{ item }}"
+  loop: "{{ q('first_found', 'tasks/{{ ansible_os_family }}.yml', errors='ignore') }}" 
+ 
 - name: install podman
-  package: name=podman update_cache=yes
+  package: name={{ podman_packages }} update_cache=yes
 
-- name: storage storage.conf
-  ini_file: path={{ podman_storage_conf_file }} section=storage option={{ item }} value={{ podman_storage_settings[item] }}
-  with_items: "{{ podman_storage_settings }}"
+- name: storage.conf
+  ini_file: path={{ podman_storage_conf_file }} section={{ item.section }} option={{ item.option }} value={{ item.value }}
+  loop: "{{ podman_storage_settings | dict2ini }}"
 
-- name: storage.options storage.conf
-  ini_file: path={{ podman_storage_conf_file }} section=storage.options option={{ item }} value={{ podman_storage_options_settings[item] }}
-  with_items: "{{ podman_storage_options_settings }}"
-
-- name: storage.options.thinpool storage.conf
-  ini_file: path={{ podman_storage_conf_file }} section=storage.options.thinpool option={{ item }} value={{ podman_storage_options_thinpool_settings[item] }}
-  with_items: "{{ podman_storage_options_thinpool_settings }}"
+- name: registries.conf
+  ini_file: path={{ podman_registries_conf_file }} section={{ item.section }} option={{ item.option }} value={{ item.value }}
+  loop: "{{ podman_registries_settings | dict2ini }}"

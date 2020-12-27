@@ -1,0 +1,10 @@
+---
+
+- name: add key
+  apt_key:
+      url: "{{ podman_repo_base_url }}{{ (ansible_distribution == 'Ubuntu') | ternary('x', '') }}{{ podman_repo_distro }}/Release.key"
+
+- name: add repository
+  apt_repository:
+      repo: "deb {{ podman_repo_base_url }}{{ (ansible_distribution == 'Ubuntu') | ternary('x', '') }}{{ podman_repo_distro }}/ /"
+      filename: devel:kubic:libcontainers:stable
