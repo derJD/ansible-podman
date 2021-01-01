@@ -23,6 +23,7 @@ Role Variables
 | `podman_registries_settings` | Dict | `{}` | Settings for registries.conf |
 | `podman_repo_base_url` | String | [See defaults/main.yml](defaults/main.yml#L13) | libcontainer's repository URL |
 | `podman_repo_distro` | String | `{{ ansible_distribution }}_{{ ansible_distribution_version }}` | String containing Distro and version |
+| `podman_libseccomp2_backport_releases` | List | `["buster"]` | List of releases that needs libseccomp2 installed from backports |
 
 Dependencies
 ------------

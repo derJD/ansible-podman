@@ -8,3 +8,7 @@
   apt_repository:
       repo: "deb {{ podman_repo_base_url }}{{ (ansible_distribution == 'Ubuntu') | ternary('x', '') }}{{ podman_repo_distro }}/ /"
       filename: devel:kubic:libcontainers:stable
+
+- name: Install libseccomp2 from backports
+  package: name=libseccomp2 default_release={{ ansible_distribution_release }}-backports
+  when: ansible_distribution_release in podman_libseccomp2_backport_releases
