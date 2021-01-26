@@ -2,8 +2,8 @@
 
 - name: Distribution specific tasks
   include_tasks: "{{ item }}"
-  loop: "{{ q('first_found', 'tasks/{{ ansible_os_family }}.yml', errors='ignore') }}" 
- 
+  loop: "{{ q('first_found', 'tasks/{{ ansible_os_family }}.yml', errors='ignore') }}"
+
 - name: install podman
   package: name={{ podman_packages }} update_cache=yes
 
