@@ -8,7 +8,8 @@ Valid options for registries.conf can be seen [here](https://github.com/containe
 Requirements
 ------------
 
-None so far.
+* Please ensure that you install all collections described in [depencency section](#dependencies)
+* Please do not use `gather_facts: no` as it's needed for distinguishing OS distributions
 
 Role Variables
 --------------
@@ -28,7 +29,19 @@ Role Variables
 Dependencies
 ------------
 
-None so far...
+This role depends on a collection. Currently there is no way of handling these dependencies within roles meta [and there won't be any.](https://github.com/ansible/ansible/issues/62847#issuecomment-756836439)
+
+* [![Galaxy](https://img.shields.io/static/v1??style=flat&logo=ansible&label=galaxy&message=derJD.general&color=blue)](https://galaxy.ansible.com/derJD/general)
+
+Install directly `ansible-galaxy collection install derjd.general` or via `requirements.yml`:
+
+```yaml
+---
+
+collections:
+  - derjd.general
+
+```
 
 Example Playbook
 ----------------
