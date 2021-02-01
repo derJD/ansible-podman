@@ -14,3 +14,7 @@
 - name: registries.conf
   ini_file: path={{ podman_registries_conf_file }} section={{ item.section }} option={{ item.option }} value={{ item.value }}
   loop: "{{ podman_registries_settings | derjd.general.dict2ini }}"
+
+- name: podman socket
+  service: name=podman enabled=yes state=started
+  when: podman_socket | bool

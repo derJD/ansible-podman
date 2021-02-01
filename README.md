@@ -17,6 +17,7 @@ Role Variables
 | Variable | Type | Default | Description |
 | -------- | ---- | ------- | ----------- |
 | `podman_packages` | List | `["podman"]` | List of packages to install |
+| `podman_socket` | Bool | False | Enable docker compatible podman API service |
 | `podman_conf_dir` | String | `/etc/containers/` | Container config directory |
 | `podman_storage_conf_file` | String | `/etc/containers/storage.conf` | Path to storage.conf |
 | `podman_registries_conf_file` | String | `/etc/containers/registries.conf` | Path to registries.conf |
