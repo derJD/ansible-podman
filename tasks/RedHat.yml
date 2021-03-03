@@ -7,5 +7,5 @@
   yum_repository:
     name: devel:kubic:libcontainers:stable.repo
     description: OpenSUSE's kubic repository
-    baseurl: "{{ podman_repo_base_url }}{{ podman_repo_distro }}"
+    baseurl: "{{ podman_yum_repo_url }}"
     gpgcheck: true
