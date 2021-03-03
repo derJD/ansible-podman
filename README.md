@@ -17,6 +17,7 @@ Role Variables
 | Variable | Type | Default | Description |
 | -------- | ---- | ------- | ----------- |
 | `podman_packages` | List | `["podman"]` | List of packages to install |
+| `podman_packages_state` | String | `present` | State of package to install |
 | `podman_socket` | Bool | False | Enable docker compatible podman API service |
 | `podman_conf_dir` | String | `/etc/containers/` | Container config directory |
 | `podman_storage_conf_file` | String | `/etc/containers/storage.conf` | Path to storage.conf |
@@ -25,6 +26,8 @@ Role Variables
 | `podman_registries_settings` | Dict | `{}` | Settings for registries.conf |
 | `podman_repo_base_url` | String | [See defaults/main.yml](defaults/main.yml#L13) | libcontainer's repository URL |
 | `podman_repo_distro` | String | `{{ ansible_distribution }}_{{ ansible_distribution_version }}` | String containing Distro and version |
+| `podman_yum_repo_url` | String | `{{ podman_repo_base_url }}{{ ansible_distribution }}_{{ ansible_distribution_major_version }}` | YUM repo URL |
+| `podman_rpm_key` | String | `{{ podman_repo_base_url }}{{ podman_repo_distro }}/repodata/repomd.xml.key` | URL to the RPM key |
 | `podman_libseccomp2_backport_releases` | List | `["buster"]` | List of releases that needs libseccomp2 installed from backports |
 
 Dependencies
