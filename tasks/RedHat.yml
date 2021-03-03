@@ -1,0 +1,11 @@
+---
+
+- name: add key
+  rpm_key: key={{ podman_rpm_key }}
+
+- name: add repository
+  yum_repository:
+    name: devel:kubic:libcontainers:stable.repo
+    description: OpenSUSE's kubic repository
+    baseurl: "{{ podman_yum_repo_url }}"
+    gpgcheck: true

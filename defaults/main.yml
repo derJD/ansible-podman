@@ -2,6 +2,7 @@
 
 podman_packages:
   - podman
+podman_packages_state: present
 podman_socket: False
 
 podman_conf_dir: /etc/containers
@@ -13,6 +14,9 @@ podman_registries_settings: {}
 
 podman_repo_base_url: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/"
 podman_repo_distro: "{{ ansible_distribution }}_{{ ansible_distribution_version }}"
+
+podman_yum_repo_url: "{{ podman_repo_base_url }}{{ ansible_distribution }}_{{ ansible_distribution_major_version }}"
+podman_rpm_key: "{{ podman_yum_repo_url }}/repodata/repomd.xml.key"
 
 podman_libseccomp2_backport_releases:
   - buster
